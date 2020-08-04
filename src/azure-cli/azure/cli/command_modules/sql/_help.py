@@ -110,19 +110,19 @@ examples:
 
 helps['sql db import'] = """
 type: command
-short-summary: Imports a bacpac into an existing database.
+short-summary: Imports a bacpac into a new database, or an existing empty database.
 examples:
   - name: Get an SAS key for use in import operation.
     text: |
         az storage blob generate-sas --account-name myAccountName -c myContainer -n myBacpac.bacpac \\
             --permissions r --expiry 2018-01-01T00:00:00Z
-  - name: Import bacpac into an existing database using an SAS key.
+  - name: Import a bacpac using an SAS key.
     text: |
         az sql db import -s myserver -n mydatabase -g mygroup -p password -u login \\
             --storage-key "?sr=b&sp=rw&se=2018-01-01T00%3A00%3A00Z&sig=mysignature&sv=2015-07-08" \\
             --storage-key-type SharedAccessKey \\
             --storage-uri https://myAccountName.blob.core.windows.net/myContainer/myBacpac.bacpac
-  - name: Import bacpac into an existing database using a storage account key.
+  - name: Import a bacpac using a storage account key.
     text: |
         az sql db import -s myserver -n mydatabase -g mygroup -p password -u login --storage-key MYKEY== \\
             --storage-key-type StorageAccessKey \\
